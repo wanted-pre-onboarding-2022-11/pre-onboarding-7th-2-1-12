@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { customPromise } from "./utils";
+
+const SAMPLE_DATA = ["apple", "banana", "cherry"];
 
 function App() {
+  const [fruits, setFruits] = useState(null);
+
+  useEffect(() => {
+    customPromise(SAMPLE_DATA).then((data) => setFruits(data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Hello React!</h1>
+      {fruits ? (
+        <ul>
+          {fruits.map((fruit) => (
+            <li key={fruit}>{fruit}</li>
+          ))}
+        </ul>
+      ) : (
+        <h3>로딩 중...</h3>
+      )}
+    </>
   );
 }
 
