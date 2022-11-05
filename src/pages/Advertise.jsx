@@ -1,7 +1,13 @@
 import React from "react";
+import { Title } from "../components/common";
 
 const Advertise = () => {
-  return <div>Advertise</div>;
+  return (
+    <>
+      <Title text="광고관리" />
+      <div>Advertise</div>
+    </>
+  );
 };
 
 export default Advertise;

@@ -31,9 +31,9 @@ const Categories = ({ categories }) => {
       <Label name="categories" label="광고센터" />
       <CategoryList>
         {categories.map((category) => (
-          <CategoryItem key={category.text}>
-            <NavLink to={category.path}>{category.text}</NavLink>
-          </CategoryItem>
+          <NavLink key={category.text} to={category.path}>
+            <CategoryItem>{category.text}</CategoryItem>
+          </NavLink>
         ))}
       </CategoryList>
     </div>
@@ -71,6 +71,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 const Container = styled.nav`
+  position: relative;
   box-sizing: border-box;
   width: 240px;
   height: 100%;

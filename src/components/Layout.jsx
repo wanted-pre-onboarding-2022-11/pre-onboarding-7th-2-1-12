@@ -21,4 +21,6 @@ const Container = styled.div`
 
 const Main = styled.main`
   flex: 1;
+  background-color: #dddada;
+  padding: 24px;
 `;
