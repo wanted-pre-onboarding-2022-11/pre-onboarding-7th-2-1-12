@@ -8,6 +8,18 @@ const Dashboard = () => {
     return state.trends.data;
   });
 
+  if (!data) {
+    return (
+      <>
+        <TitleContainer>
+          <Title text="대시보드" />
+          <Select name="date" options={[]} />
+        </TitleContainer>
+        <span>로딩 중...</span>
+      </>
+    );
+  }
+
   console.log(data);
 
   return (
@@ -16,7 +28,7 @@ const Dashboard = () => {
         <Title text="대시보드" />
         <Select name="date" options={[]} />
       </TitleContainer>
-      <BoardCard subTitle="통합 광고 현황">ㄴㄹㅁㅇㄹ</BoardCard>
+      <BoardCard subTitle="통합 광고 현황"></BoardCard>
     </>
   );
 };
