@@ -14,8 +14,6 @@ const BoardCard = ({ subTitle, children }) => {
   );
 };
 
-export default BoardCard;
-
 const Container = styled.section`
   background-color: white;
   box-sizing: border-box;
@@ -29,3 +27,5 @@ const SubTitle = styled.h3`
   margin-bottom: 8px;
   font-size: 16px;
 `;
+
+export default BoardCard;
