@@ -1,3 +1,4 @@
+import { GlobalStyle } from "./GlobalStyle/GlobalStyle";
 import Router from "./Routers/Router";
 // import { getData } from "./utils";
 
@@ -12,6 +13,7 @@ const App = () => {
 
   return (
     <>
+      <GlobalStyle />
       <Router />
     </>
   );
