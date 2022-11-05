@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
-import { getData } from "./utils";
+import Router from "./Routers/Router";
+// import { getData } from "./utils";
 
-const SAMPLE_DATA = ["apple", "banana", "cherry"];
+// const SAMPLE_DATA = ["apple", "banana", "cherry"];
 
-function App() {
-  const [fruits, setFruits] = useState(null);
+const App = () => {
+  // const [fruits, setFruits] = useState(null);
 
-  useEffect(() => {
-    getData(SAMPLE_DATA).then((data) => setFruits(data));
-  }, []);
+  // useEffect(() => {
+  //   getData(SAMPLE_DATA).then((data) => setFruits(data));
+  // }, []);
 
   return (
     <>
-      <h1>Hello React!</h1>
-      {fruits ? (
-        <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
-      ) : (
-        <h3>로딩 중...</h3>
-      )}
+      <Router />
     </>
   );
-}
+};
 
 export default App;
