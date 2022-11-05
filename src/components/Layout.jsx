@@ -16,7 +16,7 @@ export default Layout;
 const Container = styled.div`
   background-color: #fafafa;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const Main = styled.main`
