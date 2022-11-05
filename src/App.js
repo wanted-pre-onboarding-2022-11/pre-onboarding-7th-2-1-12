@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { customPromise } from "./utils";
+import { getData } from "./utils";
 
 const SAMPLE_DATA = ["apple", "banana", "cherry"];
 
@@ -7,7 +7,7 @@ function App() {
   const [fruits, setFruits] = useState(null);
 
   useEffect(() => {
-    customPromise(SAMPLE_DATA).then((data) => setFruits(data));
+    getData(SAMPLE_DATA).then((data) => setFruits(data));
   }, []);
 
   return (
