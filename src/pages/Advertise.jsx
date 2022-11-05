@@ -16,7 +16,8 @@ const Advertise = () => {
     );
   }
 
-  console.log(data);
+  // TODO
+  // 차트 렌더링
   return (
     <>
       <Title text="광고관리" />

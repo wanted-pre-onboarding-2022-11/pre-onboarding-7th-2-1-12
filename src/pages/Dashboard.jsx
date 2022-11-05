@@ -20,7 +20,8 @@ const Dashboard = () => {
     );
   }
 
-  console.log(data);
+  // TODO
+  // 차트 렌더링
 
   return (
     <>
