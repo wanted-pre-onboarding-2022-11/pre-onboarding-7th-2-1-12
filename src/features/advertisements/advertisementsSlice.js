@@ -24,9 +24,15 @@ export const advertisementsSlice = createSlice({
     setAds(state, action) {
       state.data = action.payload;
     },
-    editById(state, action) {
-      console.log(action);
-      const targetId = action.payload;
+    editById(state, { payload: { targetId, submitValues } }) {
+      const editedData = state.data.map((state) => {
+        if (state.id === targetId) {
+          const { status, startDate, budget, roas, convValue, cost } = submitValues;
+          return { ...state, status, startDate, budget, report: { roas, convValue, cost } };
+        }
+        return state;
+      });
+      state.data = editedData;
     },
   },
   extraReducers: (builder) => {

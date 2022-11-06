@@ -27,15 +27,21 @@ const AdCard = ({ id: targetId }) => {
     report: { cost, convValue, roas },
   } = useAdIdSelector(targetId);
 
-  const handeEditAd = () => {
-    setIsEdited((prev) => !prev);
+  const submitEditAd = (event) => {
+    event.preventDefault();
 
-    // console.("제출");
+    const submitValues = {};
+
+    const inputs = event.target.elements;
+    for (let i = 0; i < 6; i++) {
+      submitValues[inputs[i].name] = inputs[i].value;
+    }
+    dispath(editById({ targetId, submitValues }));
+    setIsEdited((prev) => !prev);
   };
+
   const handleEdit = () => {
     setIsEdited((prev) => !prev);
-    // console.log(targetId);
-    dispath(editById({ id }));
   };
   return (
     <S.CardContainer key={id}>
@@ -68,30 +74,30 @@ const AdCard = ({ id: targetId }) => {
         </S.InfoContainer>
       </S.CardView>
       <S.CarEdited isEdited={isEdited}>
-        <form onSubmit={handeEditAd}>
+        <form onSubmit={submitEditAd}>
           <S.InfoContainer>
             <p>상태</p>
-            <input defaultValue={status} />
+            <input name="status" defaultValue={status} />
           </S.InfoContainer>
           <S.InfoContainer>
             <p>광고 생성일 </p>
-            <input defaultValue={startDate} />
+            <input name="startDate" defaultValue={startDate} />
           </S.InfoContainer>
           <S.InfoContainer>
             <p>일 희망 예산</p>
-            <input defaultValue={formatAmout(budget)} />
+            <input name="budget" defaultValue={budget} />
           </S.InfoContainer>
           <S.InfoContainer>
             <p>광고 수익률</p>
-            <input defaultValue={roas} />
+            <input name="roas" defaultValue={roas} />
           </S.InfoContainer>
           <S.InfoContainer>
             <p>매출</p>
-            <input defaultValue={formatAmout(convValue)} />
+            <input name="convValue" defaultValue={convValue} />
           </S.InfoContainer>
           <S.InfoContainer>
             <p>광고 비용</p>
-            <input defaultValue={cost} />
+            <input name="cost" defaultValue={cost} />
           </S.InfoContainer>
           <S.EditButton type="submit">완료하기</S.EditButton>
         </form>
