@@ -22,3 +22,19 @@ export const getDatesStartToLast = (startDate, lastDate) => {
   }
   return result;
 };
+
+export const getPrevDatesStartToLast = (date, dateLength) => {
+  if (!(date instanceof Date)) return "Not Date Object";
+  let startDate = new Date(date);
+  startDate.setDate(startDate.getDate() - dateLength);
+  let lastDate = new Date(date);
+  lastDate.setDate(lastDate.getDate() - 1);
+
+  let result = [];
+  while (startDate <= lastDate) {
+    result.push(convString(startDate));
+    startDate.setDate(startDate.getDate() + 1);
+  }
+
+  return result;
+};

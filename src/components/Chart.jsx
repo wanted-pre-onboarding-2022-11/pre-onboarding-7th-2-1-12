@@ -7,31 +7,54 @@ import {
   PointElement,
   LineElement,
   Tooltip,
-  Legend,
 } from "chart.js";
+import styled from "styled-components";
 
-const Chart = ({ date, filterdData }) => {
-  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
+const Chart = ({ date, chartData }) => {
+  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip);
+
   const options = {
     responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
+    scales: {
+      y: {
+        grid: {
+          color: "#E2E2E230",
+        },
+        axis: "y",
+        display: true,
+        position: "left",
+        // ticks: {
+        //   callback: (value) => {
+        //     if (chartData[0].label === "roas") return `${value}%`;
+        //     return value;
+        //   },
+        // },
       },
     },
   };
 
   const data = {
     labels: date,
-    datasets: filterdData.map((e) => {
+    datasets: chartData.map((e, i) => {
       return {
         ...e,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: i === 0 ? "tomato" : "rgb(65, 105, 225)",
+        backgroundColor: i === 0 ? "rgba(255, 99, 132, 0.5)" : "rgb(22, 50, 136)",
       };
     }),
   };
-  return <Line data={data} options={options} updateMode={"normal"} />;
+
+  return (
+    <ChartContainer>
+      <Line data={data} options={options} />
+    </ChartContainer>
+  );
 };
+
+const ChartContainer = styled.div`
+  > canvas {
+    max-height: 400px;
+  }
+`;
 
 export default Chart;

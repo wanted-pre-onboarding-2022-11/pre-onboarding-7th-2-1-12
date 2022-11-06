@@ -13,7 +13,7 @@ const CustomDatePicker = () => {
   const dispatch = useDispatch();
   const [targetDate, setTargetDate] = useState({
     startDate: convDate(trendData.date[0]),
-    endDate: convDate(trendData.date[1]),
+    endDate: convDate(trendData.date[trendData.date.length - 1]),
   });
 
   const handelDate = (dates) => {

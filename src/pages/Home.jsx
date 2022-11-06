@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { getFilterData } from "../redux/trendDataSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import useInitailData from "../hooks/useInitailData";
 import Chart from "../components/Chart";
+import HomeInfo from "../components/HomeInfo";
+import Filter from "../components/Filter";
 
 const Home = () => {
-  const dispatch = useDispatch();
   const { trendData } = useSelector((state) => state);
   useInitailData();
 
@@ -16,32 +16,9 @@ const Home = () => {
     <>
       <HomeTitle>통합 광고 현황</HomeTitle>
       <HomeContainer>
-        <HomeInfo></HomeInfo>
-        <button
-          onClick={() => {
-            dispatch(getFilterData({ orderBy: ["imp", trendData.orderBy[1]] }));
-          }}
-        >
-          첫 번째
-        </button>
-        <button
-          onClick={() => {
-            dispatch(getFilterData({ orderBy: [trendData.orderBy[0], "cost"] }));
-          }}
-        >
-          두 번째
-        </button>
-        <button
-          onClick={() => {
-            dispatch(getFilterData({ orderBy: [trendData.orderBy[0], null] }));
-          }}
-        >
-          두 번째 삭제
-        </button>
-
-        {!trendData.isLoading && (
-          <Chart date={trendData.date} filterdData={trendData.filterdData} />
-        )}
+        <HomeInfo infoData={trendData.infoData} prevInfoData={trendData.prevInfoData} />
+        <Filter />
+        <Chart date={trendData.date} chartData={trendData.chartData} />
       </HomeContainer>
     </>
   );
@@ -61,9 +38,5 @@ const HomeTitle = styled.div`
   color: #3a474e;
   margin-bottom: 20px;
 `;
-
-const HomeInfo = styled.div``;
-
-const HomeInfoItem = styled.div``;
 
 export default Home;
