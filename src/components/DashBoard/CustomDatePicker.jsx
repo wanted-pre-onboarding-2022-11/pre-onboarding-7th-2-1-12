@@ -4,12 +4,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { convDate, getDatesStartToLast } from "../../utils/convDate";
-import { getFilterData } from "../../features/trend/trendDataSlice";
+import { getFilterData, useTrendDataSelector } from "../../features/trend/trendDataSlice";
 
 const CustomDatePicker = () => {
-  const trendData = useSelector((state) => state.trendDataReducer);
+  const trendData = useTrendDataSelector();
   const dispatch = useDispatch();
   const [targetDate, setTargetDate] = useState({
     startDate: convDate(trendData.date[0]),

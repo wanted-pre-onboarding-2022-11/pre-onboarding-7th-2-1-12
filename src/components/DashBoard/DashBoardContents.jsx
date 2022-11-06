@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import useInitailData from "../../hooks/useInitailData";
 import Chart from "./Chart";
 import HomeInfo from "./HomeInfo";
 import Filter from "./FIlter";
+import { useTrendDataSelector } from "../../features/trend/trendDataSlice";
 
 const DashBoardContents = () => {
-  const trendData = useSelector((state) => state.trendDataReducer);
+  const trendData = useTrendDataSelector();
   useInitailData();
 
   if (trendData.isLoading) return <div>로딩중</div>;

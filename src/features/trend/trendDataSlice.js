@@ -2,11 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getData } from "../../utils";
 import trendDataSet from "../../data/trend-data-set.json";
 import { getPrevDatesStartToLast } from "../../utils/convDate";
+import { useSelector } from "react-redux";
 
 export const getList = createAsyncThunk("trendDataSlice/getList", async () => {
   const res = await getData(trendDataSet);
   return res.report.daily;
 });
+export const useTrendDataSelector = () => useSelector((state) => state.trendDataReducer);
 
 const handleTempData = (data, date) => {
   let tempData = data.filter((e) => date.includes(e.date));

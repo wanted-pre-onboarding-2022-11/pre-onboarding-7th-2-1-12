@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { getFilterData } from "../../features/trend/trendDataSlice";
+import { useDispatch } from "react-redux";
+import { getFilterData, useTrendDataSelector } from "../../features/trend/trendDataSlice";
 
 const CustomSelect = ({ option, positon }) => {
   const dispatch = useDispatch();
-  const trendData = useSelector((state) => state.trendDataReducer);
+  const trendData = useTrendDataSelector();
 
   const [isVisivle, setIsVisivle] = useState(false);
 
