@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AdvertiseList } from "../components/Advertise";
 import { BoardCard, Title } from "../components/common";
 import { fetchAllAdvertise } from "../store/advertises";
 
@@ -9,6 +10,10 @@ const Advertise = () => {
   const data = useSelector((state) => {
     return state.advertises.data;
   });
+
+  const handleEdit = (id) => {
+    console.log(id);
+  };
 
   useEffect(() => {
     if (!data) {
@@ -25,12 +30,12 @@ const Advertise = () => {
     );
   }
 
-  // TODO
-  // 차트 렌더링
   return (
     <>
       <Title text="광고관리" />
-      <BoardCard>광고아ㅏㅏㅏ</BoardCard>
+      <BoardCard>
+        <AdvertiseList advertises={data.ads} onEdit={handleEdit} />
+      </BoardCard>
     </>
   );
 };
