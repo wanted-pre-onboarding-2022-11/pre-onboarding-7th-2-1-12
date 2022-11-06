@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import adSlice from "./adSlice";
+import listSlice from "./listSlice";
 
 const store = configureStore({
   reducer: {
-    adSlice: adSlice.reducer,
+    adSlice: listSlice.reducer,
   },
 });
 
