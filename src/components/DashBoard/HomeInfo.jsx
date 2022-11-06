@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { formatAmout } from "../../utils/formatAmount";
 
 const HomeInfo = ({ infoData, prevInfoData }) => {
   return (
@@ -14,22 +15,22 @@ const HomeInfo = ({ infoData, prevInfoData }) => {
       <HomeInfoItem>
         <HomeInfoItemTitle>광고비</HomeInfoItemTitle>
         <HomeInfoItemContent isPositive={prevInfoData.cost > 0}>
-          <span>{infoData.cost}</span>
-          <span>{prevInfoData.cost}</span>
+          <span>{formatAmout(infoData.cost)}</span>
+          <span>{formatAmout(prevInfoData.cost)}</span>
         </HomeInfoItemContent>
       </HomeInfoItem>
       <HomeInfoItem>
         <HomeInfoItemTitle>노출 수</HomeInfoItemTitle>
         <HomeInfoItemContent isPositive={prevInfoData.imp > 0}>
-          <span>{infoData.imp}</span>
-          <span>{prevInfoData.imp}</span>
+          <span>{formatAmout(infoData.imp)}</span>
+          <span>{formatAmout(prevInfoData.imp)}</span>
         </HomeInfoItemContent>
       </HomeInfoItem>
       <HomeInfoItem>
         <HomeInfoItemTitle>클릭수</HomeInfoItemTitle>
         <HomeInfoItemContent isPositive={prevInfoData.click > 0}>
-          <span>{infoData.click}</span>
-          <span>{prevInfoData.click}</span>
+          <span>{formatAmout(infoData.click)}</span>
+          <span>{formatAmout(prevInfoData.click)}</span>
         </HomeInfoItemContent>
       </HomeInfoItem>
       <HomeInfoItem>
@@ -42,8 +43,8 @@ const HomeInfo = ({ infoData, prevInfoData }) => {
       <HomeInfoItem>
         <HomeInfoItemTitle>매출</HomeInfoItemTitle>
         <HomeInfoItemContent isPositive={prevInfoData.convValue > 0}>
-          <span>{infoData.convValue}</span>
-          <span>{prevInfoData.convValue}</span>
+          <span>{formatAmout(infoData.convValue)}</span>
+          <span>{formatAmout(prevInfoData.convValue)}</span>
         </HomeInfoItemContent>
       </HomeInfoItem>
     </HomeInfoContainer>

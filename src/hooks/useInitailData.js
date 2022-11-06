@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useEffect, useCallback } from "react";
-import { getList, useTrendDataSelector } from "../features/trend/trendDataSlice";
+import { useTrendDataSelector } from "../features/trend/trendDataSlice";
+import { getList } from "../features/trend/trendDataThunk";
 
 const useInitailData = () => {
   const dispatch = useDispatch();
