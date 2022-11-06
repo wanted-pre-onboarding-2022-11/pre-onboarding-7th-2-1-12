@@ -145,11 +145,15 @@ const S = {
     }
   `,
   EditButton: styled.button`
+    text-align: center;
     width: 92px;
     height: 40px;
     background: #ffffff;
     border: 1px solid #d1d8dc;
     border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #3a474e;
   `,
 
   CardView: styled.div`

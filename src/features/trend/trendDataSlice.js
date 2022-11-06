@@ -113,7 +113,6 @@ const trendDataSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getList.fulfilled, (state, action) => {
-      console.log("here");
       state.data = action.payload;
       const prevDate = getPrevDatesStartToLast(new Date(state.date[0]), state.date.length);
 
