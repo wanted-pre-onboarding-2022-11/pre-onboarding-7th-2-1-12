@@ -1,21 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { setState } from "../../features/advertisements/filterStateSlice";
+import { setState, useFilterStateSelector } from "../../features/advertisements/filterStateSlice";
+import { FILTER_STATUS, getValues } from "../../utils/constant";
 
-const SubHeader = ({ options }) => {
-  const selectRef = useRef();
+const options = getValues(FILTER_STATUS);
+
+const SubHeader = () => {
+  const { value: filterState } = useFilterStateSelector();
+
   const dispatch = useDispatch();
   const handleSelect = (e) => {
     dispatch(setState(e.target.value));
   };
 
-  useEffect(() => {
-    dispatch(setState(selectRef.current.value));
-  }, [dispatch]);
   return (
     <S.SubHeader>
-      <S.Select ref={selectRef} onChange={handleSelect}>
+      <S.Select value={filterState ?? ""} onChange={handleSelect}>
         {options.map((option) => (
           <option key={option} value={option}>
             {option}

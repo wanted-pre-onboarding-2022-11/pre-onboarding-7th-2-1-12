@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+import adService from "../../service/adService";
 
 import { filter } from "./advertisementsThunk";
 export const AD_SLICE_NAME = "advertisements";

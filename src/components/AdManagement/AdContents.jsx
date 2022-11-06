@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import AdList from "./AdList";
 import SubHeader from "./SubHeader";
-const options = ["전체 광고", "진행중 광고", "중단된 광고"];
 
 const AdContents = () => {
   return (
     <>
       <S.AdContents>
-        <SubHeader options={options} />
+        <SubHeader />
         <AdList />
       </S.AdContents>
     </>

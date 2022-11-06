@@ -1,5 +1,6 @@
 import { getData } from "../utils";
 import adList from "../data/adList.json";
+import { FILTER_STATUS } from "../utils/constant";
 
 const END_STATUS = "ended";
 const ACTIVE_STATUS = "active";
@@ -11,11 +12,6 @@ class adService {
     this.#advertisements = adList.ads;
     this.#filter = null;
   }
-  async filter() {
-    if (this.#filter === "중단됨") return await this.fetchEnded();
-    else if (this.#filter === "진행중") return await this.fetchOnGOing();
-    else return await this.fetchAll();
-  }
 
   setFilter(value) {
     this.#filter = value;
@@ -25,12 +21,18 @@ class adService {
     return this.#filter;
   }
 
+  async filter() {
+    if (this.#filter === FILTER_STATUS.ended) return await this.fetchEnded();
+    else if (this.#filter === FILTER_STATUS.active) return await this.fetchOnGOing();
+    else return await this.fetchAll();
+  }
+
   async fetchAll() {
     return await getData(this.#advertisements);
   }
 
   async fetchOnGOing() {
-    return await getData(await this.getFilterOnGoing());
+    return await getData(this.getFilterOnGoing());
   }
 
   async fetchEnded() {

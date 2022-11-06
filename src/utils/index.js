@@ -8,19 +8,3 @@ export const getData = (data) =>
 export const getAds = async () => {
   return await getData(adList);
 };
-
-const filertOnGoing = (data) => {
-  const today = new Date();
-
-  return data.filter((ad) => {
-    const startDate = new Date(ad.startDate);
-    const endDate = new Date(ad.endDate);
-    return startDate <= today && today < endDate;
-  });
-};
-
-export const getOngoing = async () => {
-  const data = adList;
-  console.log(data);
-  return await getData(filertOnGoing(data));
-};
