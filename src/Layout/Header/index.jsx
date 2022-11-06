@@ -2,8 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { BiBarChartSquare } from "react-icons/bi";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../Routers/path";
 
 const Header = () => {
+  const [isSelected, setIsSelected] = useState(true);
+  const navigate = useNavigate();
   return (
     <Container>
       <Logo />
@@ -15,13 +20,25 @@ const Header = () => {
       </Service>
       <>
         <SubTitle>광고센터</SubTitle>
-        <PageBtn>
+        <PageBtn
+          isSelected
+          onClick={() => {
+            navigate(`${PATH.BASE}`);
+            setIsSelected((prev) => !prev);
+          }}
+        >
           <div>
             <MdOutlineSpaceDashboard />
           </div>
           <span>대시보드</span>
         </PageBtn>
-        <PageBtn isSelected>
+        <PageBtn
+          isSelected={!isSelected}
+          onClick={() => {
+            navigate(`${PATH.AD_PAGE}`);
+            setIsSelected((prev) => !prev);
+          }}
+        >
           <div>
             <BiBarChartSquare />
           </div>
