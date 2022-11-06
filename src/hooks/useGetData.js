@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import { useCallback } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getAdList } from "../store/adSlice";
+import { getList } from "../store/listSlice";
 
-export const useGetData = () => {
+export const useGetData = (isAd) => {
   const dispatch = useDispatch();
   const [list, setList] = useState();
   const fetched = useCallback(async () => {
-    dispatch(getAdList()).then((res) => setList(res));
-  }, [dispatch]);
+    dispatch(getList(isAd)).then((res) => setList(res));
+  }, [dispatch, isAd]);
 
   useEffect(() => {
     fetched();
