@@ -18,7 +18,7 @@ const S = {
   AdSection: styled.section`
     padding: 2.5rem 4rem 2.5rem 4rem;
     width: 100vw;
-    height: 100vh;
+    height: 100%auto;
     background: #f6f7f8;
     h3 {
       padding: 2.5rem 1rem;

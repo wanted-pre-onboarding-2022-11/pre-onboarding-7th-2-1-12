@@ -58,7 +58,7 @@ const S = {
     flex-direction: column;
     gap: 5rem;
 
-    min-width: 32rem;
+    min-width: 20rem;
     min-height: 129.4rem;
     background: #ffffff;
     box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.04);
@@ -75,7 +75,7 @@ const S = {
   `,
   Select: styled.select`
     padding: 2rem;
-    width: 240px;
+    width: 100%;
     height: 60px;
     background: #ffffff;
     border: 1px solid #d1d8dc;

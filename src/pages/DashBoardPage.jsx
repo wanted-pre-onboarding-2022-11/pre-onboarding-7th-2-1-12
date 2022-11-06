@@ -7,7 +7,7 @@ const DashBoardPage = () => {
   return (
     <>
       <LayoutTitle>
-        <h3>대쉬 보드</h3>
+        <h3>대시 보드</h3>
         <CustomDatePicker />
       </LayoutTitle>
       <DashBoardContents />
@@ -15,11 +15,9 @@ const DashBoardPage = () => {
   );
 };
 const LayoutTitle = styled.div`
-  padding: 25px 40px;
-  margin-bottom: 20px;
   color: #3a474e;
   font-weight: 900;
-  font-size: 26px;
+  font-size: 2.6rem;
   line-height: 30px;
   display: flex;
   align-items: center;
