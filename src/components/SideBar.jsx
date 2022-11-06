@@ -36,7 +36,7 @@ const SideBar = () => {
 const Tab = styled.button`
   display: flex;
   box-sizing: border-box;
-  color: ${(props) => (props.isActive ? "#586CF5" : "gray")};
+  color: ${(props) => (props.isActive ? "#586CF5" : "#3A474E")};
 
   font-weight: 700;
   font-size: 1.6rem;

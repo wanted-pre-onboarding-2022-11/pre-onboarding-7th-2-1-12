@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { useAdIdSelector } from "../../features/advertisements/advertisementsSlice";
+import { editById, useAdIdSelector } from "../../features/advertisements/advertisementsSlice";
 import { formatAmout } from "../../utils/formatAmount";
 
 const handleTitlePrefix = ({ adType, title }) => {
@@ -13,6 +14,8 @@ const dateFomatter = (data) => {
 };
 
 const AdCard = ({ id: targetId }) => {
+  const [isEdited, setIsEdited] = useState(false);
+  const dispath = useDispatch();
   const {
     id,
     adType,
@@ -24,10 +27,20 @@ const AdCard = ({ id: targetId }) => {
     report: { cost, convValue, roas },
   } = useAdIdSelector(targetId);
 
+  const handeEditAd = () => {
+    setIsEdited((prev) => !prev);
+
+    // console.("제출");
+  };
+  const handleEdit = () => {
+    setIsEdited((prev) => !prev);
+    // console.log(targetId);
+    dispath(editById({ id }));
+  };
   return (
     <S.CardContainer key={id}>
       <h5>{handleTitlePrefix({ adType, title })}</h5>
-      <div>
+      <S.CardView isEdited={isEdited}>
         <S.InfoContainer>
           <p>상태</p>
           <strong>{status}</strong>
@@ -39,7 +52,7 @@ const AdCard = ({ id: targetId }) => {
         </S.InfoContainer>
         <S.InfoContainer>
           <p>일 희망 예산</p>
-          <strong>{formatAmout(budget)}만원</strong>
+          <strong>{formatAmout(budget)}</strong>
         </S.InfoContainer>
         <S.InfoContainer>
           <p>광고 수익률</p>
@@ -53,7 +66,37 @@ const AdCard = ({ id: targetId }) => {
           <p>광고 비용</p>
           <strong>{cost}</strong>
         </S.InfoContainer>
-      </div>
+      </S.CardView>
+      <S.CarEdited isEdited={isEdited}>
+        <form onSubmit={handeEditAd}>
+          <S.InfoContainer>
+            <p>상태</p>
+            <input defaultValue={status} />
+          </S.InfoContainer>
+          <S.InfoContainer>
+            <p>광고 생성일 </p>
+            <input defaultValue={startDate} />
+          </S.InfoContainer>
+          <S.InfoContainer>
+            <p>일 희망 예산</p>
+            <input defaultValue={formatAmout(budget)} />
+          </S.InfoContainer>
+          <S.InfoContainer>
+            <p>광고 수익률</p>
+            <input defaultValue={roas} />
+          </S.InfoContainer>
+          <S.InfoContainer>
+            <p>매출</p>
+            <input defaultValue={formatAmout(convValue)} />
+          </S.InfoContainer>
+          <S.InfoContainer>
+            <p>광고 비용</p>
+            <input defaultValue={cost} />
+          </S.InfoContainer>
+          <S.EditButton type="submit">완료하기</S.EditButton>
+        </form>
+      </S.CarEdited>
+      {isEdited ? null : <S.EditButton onClick={handleEdit}>수정하기</S.EditButton>}
     </S.CardContainer>
   );
 };
@@ -94,6 +137,20 @@ const S = {
     strong {
       color: #3a474e;
     }
+  `,
+  EditButton: styled.button`
+    width: 92px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #d1d8dc;
+    border-radius: 10px;
+  `,
+
+  CardView: styled.div`
+    display: ${(props) => (props.isEdited ? "none" : null)};
+  `,
+  CarEdited: styled.div`
+    display: ${(props) => (props.isEdited ? null : "none")};
   `,
 };
 

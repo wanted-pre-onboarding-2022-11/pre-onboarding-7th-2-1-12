@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import adService from "../../service/adService";
 
 import { filter } from "./advertisementsThunk";
 export const AD_SLICE_NAME = "advertisements";
@@ -25,6 +24,10 @@ export const advertisementsSlice = createSlice({
     setAds(state, action) {
       state.data = action.payload;
     },
+    editById(state, action) {
+      console.log(action);
+      const targetId = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(filter.pending, (state) => {
@@ -45,5 +48,5 @@ export const advertisementsSlice = createSlice({
   },
 });
 
-export const { setAds } = advertisementsSlice.actions;
+export const { setAds, editById } = advertisementsSlice.actions;
 export default advertisementsSlice.reducer;

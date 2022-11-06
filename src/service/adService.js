@@ -1,5 +1,5 @@
 import { getData } from "../utils";
-import adList from "../data/adList.json";
+import adList from "../data/ad-list-data-set";
 import { FILTER_STATUS } from "../utils/constant";
 
 const END_STATUS = "ended";
