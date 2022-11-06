@@ -16,8 +16,6 @@ const Dashboard = () => {
     }
   }, [dispatch, data]);
 
-  console.log(data);
-
   if (!data) {
     return (
       <>

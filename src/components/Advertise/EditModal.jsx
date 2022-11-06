@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { activeStatusMap, formatMoney, formatDateTime } from "../../utils";
-import { Select } from "../common";
+import { activeStatusMap, formatDateTime } from "../../utils";
 
 const EditModal = ({ advertise, onClose }) => {
   const { id, endDate, startDate, status, title } = advertise;
