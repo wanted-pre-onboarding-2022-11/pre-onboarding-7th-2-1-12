@@ -11,10 +11,6 @@ const Advertise = () => {
     return state.advertises.data;
   });
 
-  const handleEdit = (id) => {
-    console.log(id);
-  };
-
   useEffect(() => {
     if (!data) {
       dispatch(fetchAllAdvertise());
@@ -34,7 +30,7 @@ const Advertise = () => {
     <>
       <Title text="광고관리" />
       <BoardCard>
-        <AdvertiseList advertises={data.ads} onEdit={handleEdit} />
+        <AdvertiseList advertises={data.ads} />
       </BoardCard>
     </>
   );

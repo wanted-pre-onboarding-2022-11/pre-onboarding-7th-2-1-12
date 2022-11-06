@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { COLOR_PALETTE } from "../../styles";
 import { activeStatusMap, formatMoney, formatDateTime, formatDateToNumber } from "../../utils";
+import EditModal from "./EditModal";
 
 /*
 interface Advertise {
@@ -20,22 +21,29 @@ interface Advertise {
 }
 */
 
-const AdvertiseItem = ({ advertise, onEdit }) => {
-  const { id, adType, budget, endDate, report, startDate, status, title } = advertise;
+const AdvertiseItem = ({ advertise }) => {
+  const { id, budget, report, startDate, status, title } = advertise;
+  const [editMode, setEditMode] = useState(false);
+  const handleCloseModal = () => setEditMode(false);
+
   return (
     <Container>
       <Title>
         {title}_{formatDateToNumber(startDate)}
       </Title>
-      <Information>
-        <div>상태 : {activeStatusMap[status]}</div>
-        <div>광고 생성 일: {formatDateTime(startDate)}</div>
-        <div>일 희망 예산 : {formatMoney(budget)}</div>
-        <div>광고 수익 률 : {report.roas}%</div>
-        <div>매출 : {formatMoney(report.convValue)}</div>
-        <div>광고 비용 : {formatMoney(report.cost)}</div>
-      </Information>
-      <button onClick={onEdit.bind(this, id)}>수정하기</button>
+      {editMode ? (
+        <EditModal advertise={advertise} onClose={handleCloseModal} />
+      ) : (
+        <Information>
+          <div>상태 : {activeStatusMap[status]}</div>
+          <div>광고 생성 일: {formatDateTime(startDate)}</div>
+          <div>일 희망 예산 : {formatMoney(budget)}</div>
+          <div>광고 수익 률 : {report.roas}%</div>
+          <div>매출 : {formatMoney(report.convValue)}</div>
+          <div>광고 비용 : {formatMoney(report.cost)}</div>
+          <button onClick={() => setEditMode(true)}>수정하기</button>
+        </Information>
+      )}
     </Container>
   );
 };

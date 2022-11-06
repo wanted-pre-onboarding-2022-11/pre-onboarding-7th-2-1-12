@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import AdvertiseItem from "./AdvertiseItem";
 
-const AdvertiseList = ({ advertises, onEdit }) => {
+const AdvertiseList = ({ advertises }) => {
   return (
     <Container>
       {advertises.map((advertise) => (
-        <AdvertiseItem key={advertise.id} advertise={advertise} onEdit={onEdit} />
+        <AdvertiseItem key={advertise.id} advertise={advertise} />
       ))}
     </Container>
   );
