@@ -8,6 +8,9 @@ const color = {
 
   primary: "#586CF5",
   bg_g: "#F6F7F8",
+
+  graph_01: "#4FADF7",
+  graph_02: "#85DA47",
 };
 
 const theme = {
