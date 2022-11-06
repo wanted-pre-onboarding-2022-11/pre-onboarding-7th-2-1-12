@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getData } from "../utils";
-import advertiseJson from "../data/advertises.json";
+import { advertises as advertiseData } from "../data";
 
 export const fetchAllAdvertise = createAsyncThunk("advertises/advertiseJson", async () => {
-  const data = await getData(advertiseJson);
+  const data = await getData(advertiseData);
   return data;
 });
 

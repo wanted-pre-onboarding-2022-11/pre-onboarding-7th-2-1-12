@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getData } from "../utils";
-import trendJson from "../data/trend.json";
+import { trends as trendsData } from "../data";
 
 export const fetchAllTrend = createAsyncThunk("trends/fetchAllTrend", async () => {
-  const data = await getData(trendJson);
+  const data = await getData(trendsData);
   return data.report.daily;
 });
 

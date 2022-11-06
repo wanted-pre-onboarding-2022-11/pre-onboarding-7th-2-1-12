@@ -1,12 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { BoardCard, Select, Title } from "../components/common";
+import { fetchAllTrend } from "../store/trends";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.trends.data;
   });
+
+  useEffect(() => {
+    if (!data) {
+      dispatch(fetchAllTrend());
+    }
+  }, [dispatch, data]);
 
   if (!data) {
     return (

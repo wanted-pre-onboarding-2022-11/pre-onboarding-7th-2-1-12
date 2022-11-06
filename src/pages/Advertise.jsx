@@ -1,11 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BoardCard, Title } from "../components/common";
+import { fetchAllAdvertise } from "../store/advertises";
 
 const Advertise = () => {
+  const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.advertises.data;
   });
+
+  useEffect(() => {
+    if (!data) {
+      dispatch(fetchAllAdvertise());
+    }
+  }, [dispatch, data]);
 
   if (!data) {
     return (
